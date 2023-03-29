@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/TintSysClass/Cliente.cs
+/TintSysClass/Telefone.cs
+/TintSysClass/Endereco.cs
