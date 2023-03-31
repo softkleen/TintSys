@@ -30,22 +30,24 @@ namespace TintSysDesk
                 Nivel.ObterPorId(Convert.ToInt32(comboBox1.SelectedValue)));
             usuario.Inserir();
             txtId.Text = usuario.Id.ToString();
-
             CarregaGrid();
-
-
-
-
         }
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
+            CarregaComboNivel();
+            CarregaGrid();
+            CarregaGridNiveis();
+        }
+
+        private void CarregaComboNivel()
+        {
+
             comboBox1.DataSource = Nivel.Listar();
             comboBox1.ValueMember = "Id";
-            comboBox1.DisplayMember= "Nome";
-
-            CarregaGrid();
+            comboBox1.DisplayMember = "Nome";
         }
+
         private void CarregaGrid()
         {
             List<Usuario> lista = Usuario.Listar();
@@ -63,6 +65,63 @@ namespace TintSysDesk
             }
         }
 
+        private void CarregaGridNiveis()
+        {
+            List<Nivel> lista = Nivel.Listar();
+            int linha = 0;
+            dgvNiveis.Rows.Clear();
+            foreach (Nivel iten in lista)
+            {
+                dgvNiveis.Rows.Add();
+                dgvNiveis.Rows[linha].Cells[0].Value = iten.Id.ToString();
+                dgvNiveis.Rows[linha].Cells[1].Value = iten.Nome;
+                dgvNiveis.Rows[linha].Cells[2].Value = iten.Sigla;
+                linha++;
+            }
+        }
 
+        private void btnInserirNivel_Click(object sender, EventArgs e)
+        {
+            Nivel n = new Nivel(txtNomeNivel.Text, txtSigla.Text);
+            n.Inserir();
+            CarregaComboNivel();
+            CarregaGridNiveis();
+        }
+
+        private void btnConsultarNivel_Click(object sender, EventArgs e)
+        {
+            Nivel n = Nivel.ObterPorId(Convert.ToInt32(txtIdNivel.Text));
+            if (n != null)
+            {
+                txtNomeNivel.Text = n.Nome;
+                txtSigla.Text = n.Sigla;
+            }
+            else 
+            {
+                MessageBox.Show("Nível não localizado!");
+                txtSigla.Clear();
+                txtNomeNivel.Clear();
+                txtIdNivel.Focus();
+                txtIdNivel.Clear();
+
+            }
+        }
+
+        private void btnEditarNivel_Click(object sender, EventArgs e)
+        {
+            Nivel n = new Nivel(
+                Convert.ToInt32(txtIdNivel.Text),
+                txtNomeNivel.Text,
+                txtSigla.Text);
+            n.Atualizar();
+            CarregaComboNivel();
+            CarregaGridNiveis();
+            CarregaGrid();
+        }
+
+        private void dgvNiveis_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            MessageBox.Show("Sério mesmo?");
+        }
     }
 }
