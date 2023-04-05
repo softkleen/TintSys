@@ -136,10 +136,9 @@ namespace TintSysClass
         public void Atualizar() 
         {
             var moimoi = Banco.Abrir();
-            moimoi.CommandText = "update usuarios set nome = @nome, senha = md5(@senha), " +
+            moimoi.CommandText = "update usuarios set nome = @nome, " +
                 "nivel_id = @nivel where id ="+Id;
             moimoi.Parameters.Add("@nome", MySqlDbType.VarChar).Value=Nome;
-            moimoi.Parameters.Add("@senha", MySqlDbType.VarChar).Value = Senha;
             moimoi.Parameters.Add("@nivel", MySqlDbType.Int32).Value = Nivel.Id;
             moimoi.ExecuteNonQuery();
             Banco.Fechar(moimoi);

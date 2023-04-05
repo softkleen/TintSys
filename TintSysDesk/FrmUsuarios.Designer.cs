@@ -49,20 +49,21 @@
             this.clnNivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtIdNivel = new System.Windows.Forms.TextBox();
-            this.txtNomeNivel = new System.Windows.Forms.TextBox();
-            this.txtSigla = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.dgvNiveis = new System.Windows.Forms.DataGridView();
             this.clnIdNivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNomeNivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnSigla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDeleteNivel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSigla = new System.Windows.Forms.TextBox();
+            this.txtNomeNivel = new System.Windows.Forms.TextBox();
+            this.txtIdNivel = new System.Windows.Forms.TextBox();
             this.btnEditarNivel = new System.Windows.Forms.Button();
             this.btnConsultarNivel = new System.Windows.Forms.Button();
             this.btnInserirNivel = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveis)).BeginInit();
@@ -95,6 +96,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Consultar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -104,6 +106,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Editar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtId
             // 
@@ -265,54 +268,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Níveis";
             // 
-            // txtIdNivel
-            // 
-            this.txtIdNivel.Location = new System.Drawing.Point(72, 24);
-            this.txtIdNivel.Name = "txtIdNivel";
-            this.txtIdNivel.Size = new System.Drawing.Size(56, 20);
-            this.txtIdNivel.TabIndex = 3;
-            // 
-            // txtNomeNivel
-            // 
-            this.txtNomeNivel.Location = new System.Drawing.Point(72, 51);
-            this.txtNomeNivel.Name = "txtNomeNivel";
-            this.txtNomeNivel.Size = new System.Drawing.Size(196, 20);
-            this.txtNomeNivel.TabIndex = 4;
-            // 
-            // txtSigla
-            // 
-            this.txtSigla.Location = new System.Drawing.Point(72, 78);
-            this.txtSigla.Name = "txtSigla";
-            this.txtSigla.Size = new System.Drawing.Size(100, 20);
-            this.txtSigla.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "ID";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Nome";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 81);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Sigla";
-            // 
             // dgvNiveis
             // 
             this.dgvNiveis.AllowUserToAddRows = false;
@@ -362,6 +317,54 @@
             this.clnDeleteNivel.ReadOnly = true;
             this.clnDeleteNivel.Text = "Excluir";
             this.clnDeleteNivel.Width = 79;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(31, 81);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Sigla";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(31, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Nome";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(31, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "ID";
+            // 
+            // txtSigla
+            // 
+            this.txtSigla.Location = new System.Drawing.Point(72, 78);
+            this.txtSigla.Name = "txtSigla";
+            this.txtSigla.Size = new System.Drawing.Size(100, 20);
+            this.txtSigla.TabIndex = 5;
+            // 
+            // txtNomeNivel
+            // 
+            this.txtNomeNivel.Location = new System.Drawing.Point(72, 51);
+            this.txtNomeNivel.Name = "txtNomeNivel";
+            this.txtNomeNivel.Size = new System.Drawing.Size(196, 20);
+            this.txtNomeNivel.TabIndex = 4;
+            // 
+            // txtIdNivel
+            // 
+            this.txtIdNivel.Location = new System.Drawing.Point(72, 24);
+            this.txtIdNivel.Name = "txtIdNivel";
+            this.txtIdNivel.Size = new System.Drawing.Size(56, 20);
+            this.txtIdNivel.TabIndex = 3;
             // 
             // btnEditarNivel
             // 
@@ -414,11 +417,26 @@
             this.btnInserirNivel.UseVisualStyleBackColor = true;
             this.btnInserirNivel.Click += new System.EventHandler(this.btnInserirNivel_Click);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "teste",
+            "tedyr",
+            "etrgsdf",
+            "sds"});
+            this.comboBox2.Location = new System.Drawing.Point(470, 83);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 12;
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 536);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.checkBox1);
@@ -484,5 +502,6 @@
         private System.Windows.Forms.Button btnEditarNivel;
         private System.Windows.Forms.Button btnConsultarNivel;
         private System.Windows.Forms.Button btnInserirNivel;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

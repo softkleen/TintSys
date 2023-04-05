@@ -123,5 +123,33 @@ namespace TintSysDesk
         {
             MessageBox.Show("Sério mesmo?");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario.Id = Convert.ToInt32(txtId.Text);
+            usuario.Nome= txtNome.Text;
+            usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(comboBox1.SelectedValue));
+            usuario.Atualizar();
+          CarregaGrid();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = Usuario.ObterPorId(Convert.ToInt32(txtId.Text));
+            if (usuario != null)
+            {
+                txtNome.Text = usuario.Nome;
+                txtEmail.Text = usuario.Email;
+                txtSenha.Text = usuario.Senha;
+                comboBox1.SelectedValue = usuario.Nivel.Id;
+                txtEmail.Enabled= false;
+                checkBox1.Checked = usuario.Ativo;
+            }
+
+            
+           // CarregaGrid();
+        }
     }
 }
