@@ -29,10 +29,16 @@
         private void InitializeComponent()
         {
             this.dgvLista = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.btnArquivar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -47,14 +53,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbUnidade = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLista
@@ -70,12 +82,68 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dgvLista.Location = new System.Drawing.Point(12, 230);
+            this.dgvLista.Location = new System.Drawing.Point(12, 244);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.ReadOnly = true;
             this.dgvLista.RowHeadersVisible = false;
             this.dgvLista.Size = new System.Drawing.Size(500, 150);
             this.dgvLista.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 40;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Descrição";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 159;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Unidade";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // Column4
+            // 
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "CodBar";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 70;
+            // 
+            // Column5
+            // 
+            this.Column5.Frozen = true;
+            this.Column5.HeaderText = "Preço";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 60;
+            // 
+            // Column6
+            // 
+            this.Column6.Frozen = true;
+            this.Column6.HeaderText = "Desconto";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 60;
+            // 
+            // Column7
+            // 
+            this.Column7.Frozen = true;
+            this.Column7.HeaderText = "Inativo";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 50;
             // 
             // btnInserir
             // 
@@ -99,6 +167,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Enabled = false;
             this.btnEditar.Location = new System.Drawing.Point(271, 179);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
@@ -106,16 +175,6 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnArquivar
-            // 
-            this.btnArquivar.Location = new System.Drawing.Point(373, 180);
-            this.btnArquivar.Name = "btnArquivar";
-            this.btnArquivar.Size = new System.Drawing.Size(75, 23);
-            this.btnArquivar.TabIndex = 4;
-            this.btnArquivar.Text = "Arquivar";
-            this.btnArquivar.UseVisualStyleBackColor = true;
-            this.btnArquivar.Click += new System.EventHandler(this.btnArquivar_Click);
             // 
             // btnBuscar
             // 
@@ -172,12 +231,12 @@
             // chkDescontinuado
             // 
             this.chkDescontinuado.AutoSize = true;
-            this.chkDescontinuado.Location = new System.Drawing.Point(361, 55);
+            this.chkDescontinuado.Location = new System.Drawing.Point(385, 55);
             this.chkDescontinuado.Name = "chkDescontinuado";
             this.chkDescontinuado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkDescontinuado.Size = new System.Drawing.Size(98, 17);
+            this.chkDescontinuado.Size = new System.Drawing.Size(74, 17);
             this.chkDescontinuado.TabIndex = 7;
-            this.chkDescontinuado.Text = "Descontinuado";
+            this.chkDescontinuado.Text = "Arquivado";
             this.chkDescontinuado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.chkDescontinuado.UseVisualStyleBackColor = true;
             this.chkDescontinuado.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -263,67 +322,118 @@
             this.cmbUnidade.TabIndex = 9;
             this.cmbUnidade.SelectedIndexChanged += new System.EventHandler(this.cmbUnidade_SelectedIndexChanged);
             // 
-            // Column1
+            // dataGridView1
             // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 40;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewCheckBoxColumn1});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 431);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(500, 105);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // Column2
+            // dataGridViewTextBoxColumn1
             // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Descrição";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 159;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 40;
             // 
-            // Column3
+            // dataGridViewTextBoxColumn2
             // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Unidade";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Descrição";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 159;
             // 
-            // Column4
+            // dataGridViewTextBoxColumn3
             // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "CodBar";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 70;
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Unidade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 60;
             // 
-            // Column5
+            // dataGridViewTextBoxColumn4
             // 
-            this.Column5.Frozen = true;
-            this.Column5.HeaderText = "Preço";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 60;
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "CodBar";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 70;
             // 
-            // Column6
+            // dataGridViewTextBoxColumn5
             // 
-            this.Column6.Frozen = true;
-            this.Column6.HeaderText = "Desconto";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 60;
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Preço";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 60;
             // 
-            // Column7
+            // dataGridViewTextBoxColumn6
             // 
-            this.Column7.Frozen = true;
-            this.Column7.HeaderText = "Inativo";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 50;
+            this.dataGridViewTextBoxColumn6.Frozen = true;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Desconto";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 60;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.Frozen = true;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Inativo";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 408);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 20);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Arquivados";
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Location = new System.Drawing.Point(13, 224);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(499, 20);
+            this.txtPesquisar.TabIndex = 11;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TintSysDesk.Properties.Resources.Search;
+            this.pictureBox1.Location = new System.Drawing.Point(487, 224);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 627);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.txtPesquisar);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
@@ -338,15 +448,17 @@
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.btnArquivar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.btnInserir);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dgvLista);
             this.Name = "FrmProduto";
             this.Text = "FrmProduto";
             this.Load += new System.EventHandler(this.FrmProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,7 +470,6 @@
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnArquivar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtDescricao;
@@ -380,5 +491,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPesquisar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

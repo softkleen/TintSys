@@ -55,7 +55,11 @@ namespace TintSysDesk
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chkDescontinuado.Checked)
+               Produto.Restaurar(int.Parse(txtId.Text));
+            else
+               Produto.Arquivar(int.Parse(txtId.Text));
+            CarregaGrid();
         }
 
         private void txtDesconto_TextChanged(object sender, EventArgs e)
@@ -96,10 +100,17 @@ namespace TintSysDesk
                 txtId.ReadOnly = true;
                 btnBuscar.Text = "...";
                 var produto = Produto.ObterPorId(int.Parse(txtId.Text));
-                txtDescricao.Text = produto.Descricao;
-                txtDesconto.Text=produto.Desconto.ToString("#,##%");
-                txtPreco.Text = produto.Preco.ToString("R$ ##.00");
-                //cmbUnidade.SelectedIndex = 0;
+                if (produto.Id>0)
+                {
+                    txtDescricao.Text = produto.Descricao;
+                    txtDesconto.Text=produto.Desconto.ToString();
+                    txtPreco.Text = produto.Preco.ToString();
+                    txtCodBar.Text = produto.CodBar;
+                    cmbUnidade.Text = produto.Unidade;
+                    chkDescontinuado.Checked = produto.Descontinuado;
+                    btnEditar.Enabled = true;
+                }
+
                 
             }
         }
@@ -111,7 +122,17 @@ namespace TintSysDesk
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+           Produto produto = new Produto(
+             int.Parse(txtId.Text),
+             txtDescricao.Text,
+             cmbUnidade.Text,
+             txtCodBar.Text,
+             double.Parse(txtPreco.Text),
+             double.Parse(txtDesconto.Text),
+             chkDescontinuado.Checked
+             );
+            produto.Atualizar();
+            CarregaGrid();
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -140,9 +161,13 @@ namespace TintSysDesk
                 MessageBox.Show("Falha ao gravar o Produto!1");
 
         }
-        private void CarregaGrid() 
-        { 
-            var lista  = Produto.Listar();
+        private void CarregaGrid(string texto="") 
+        {
+            List<Produto> lista = null;
+            if (texto!=string.Empty)
+                 lista = Produto.Listar(texto);
+            else
+                lista = Produto.Listar();
             int cont = 0;
             dgvLista.Rows.Clear();
             foreach (Produto item in lista)
@@ -163,6 +188,18 @@ namespace TintSysDesk
         private void FrmProduto_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+        }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPesquisar.Text.Length > 1)
+            {
+                CarregaGrid(txtPesquisar.Text);
+            }
+            else if(txtPesquisar.Text.Length < 2)
+            {
+                CarregaGrid();
+            }
         }
     }
 }
