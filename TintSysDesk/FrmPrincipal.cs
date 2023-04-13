@@ -41,12 +41,14 @@ namespace TintSysDesk
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            Cliente cliente = Cliente.ObterPorId(1);
-            Usuario usuario = Usuario.ObterPorId(3);
-            Pedido pedido = new Pedido(cliente, usuario);
-            pedido.Inserir();
+            
+        }
 
-            MessageBox.Show(pedido.HashCode);
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new FrmPedido();  
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
         }
     }
 }

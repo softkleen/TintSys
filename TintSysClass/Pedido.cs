@@ -36,7 +36,7 @@ namespace TintSysClass
             HashCode = hashCode;
         }
 
-        public Pedido(int id, DateTime data, string status, double desconto, Cliente cliente, Usuario usuario, DateTime arquivadoEm, string hashCode)
+        public Pedido(int id, DateTime data, string status, double desconto, Cliente cliente, Usuario usuario,string hashCode)
         {
             Id = id;
             Data = data;
@@ -44,7 +44,7 @@ namespace TintSysClass
             Desconto = desconto;
             Cliente = cliente;
             Usuario = usuario;
-            ArquivadoEm = arquivadoEm;
+           // ArquivadoEm = arquivadoEm;
             HashCode = hashCode;
             Itens = ItemPedido.ListarPorPedido(id); 
         }
@@ -83,7 +83,6 @@ namespace TintSysClass
                     dr.GetDouble(3),
                     Cliente.ObterPorId(dr.GetInt32(4)),
                     Usuario.ObterPorId(dr.GetInt32(5)),
-                    dr.GetDateTime(6),
                     dr.GetString(7)
                     );
             }
@@ -107,7 +106,7 @@ namespace TintSysClass
                         dr.GetDouble(3),
                         Cliente.ObterPorId(dr.GetInt32(4)),
                         Usuario.ObterPorId(dr.GetInt32(5)),
-                        dr.GetDateTime(6),
+
                         dr.GetString(7)
                         )
                     );
@@ -130,7 +129,7 @@ namespace TintSysClass
                         dr.GetDouble(3),
                         Cliente.ObterPorId(dr.GetInt32(4)),
                         Usuario.ObterPorId(dr.GetInt32(5)),
-                        dr.GetDateTime(6),
+
                         dr.GetString(7)
                         )
                     );
