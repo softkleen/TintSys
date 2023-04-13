@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TintSysClass;
 
 namespace TintSysDesk
 {
@@ -36,6 +37,16 @@ namespace TintSysDesk
             FrmProduto frmProduto = new FrmProduto();   
             frmProduto.MdiParent = this;    
             frmProduto.Show();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            Cliente cliente = Cliente.ObterPorId(1);
+            Usuario usuario = Usuario.ObterPorId(3);
+            Pedido pedido = new Pedido(cliente, usuario);
+            pedido.Inserir();
+
+            MessageBox.Show(pedido.HashCode);
         }
     }
 }

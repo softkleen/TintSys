@@ -55,11 +55,14 @@ namespace TintSysDesk
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkDescontinuado.Checked)
-               Produto.Restaurar(int.Parse(txtId.Text));
-            else
-               Produto.Arquivar(int.Parse(txtId.Text));
-            CarregaGrid();
+            if (txtId.Text!=string.Empty)
+            {
+                if (chkDescontinuado.Checked)
+                   Produto.Arquivar(int.Parse(txtId.Text));
+                else
+                   Produto.Restaurar(int.Parse(txtId.Text));
+                CarregaGrid();
+            }
         }
 
         private void txtDesconto_TextChanged(object sender, EventArgs e)
@@ -199,6 +202,24 @@ namespace TintSysDesk
             else if(txtPesquisar.Text.Length < 2)
             {
                 CarregaGrid();
+            }
+        }
+
+        private void dgvLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridView dgv = (DataGridView)sender; 
+            //dgvLista.Rows[e.RowIndex].Cells[e.ColumnIndex]
+            if (e.ColumnIndex == 6)
+            {
+                bool x = Convert.ToBoolean(dgvLista.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                int id = Convert.ToInt32(dgvLista.Rows[e.RowIndex].Cells[0].Value);
+                if (x)
+                   Produto.Restaurar(id);
+                else
+                   Produto.Arquivar(id);
+                CarregaGrid();
+
             }
         }
     }
