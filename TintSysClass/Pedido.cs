@@ -46,6 +46,7 @@ namespace TintSysClass
             Usuario = usuario;
             ArquivadoEm = arquivadoEm;
             HashCode = hashCode;
+            Itens = ItemPedido.ListarPorPedido(id); 
         }
 
         public Pedido(Cliente cliente, Usuario usuario)
@@ -113,10 +114,66 @@ namespace TintSysClass
             }
             return pedidos;
         }
-        public void Listar() { }
-        public void Atualizar() { }
+        public static List<Pedido> Listar() 
+        {
+            List<Pedido> pedidos = null;
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "select * from pedidos ";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(
+                    new Pedido(
+                        dr.GetInt32(0),
+                        dr.GetDateTime(1),
+                        dr.GetString(2),
+                        dr.GetDouble(3),
+                        Cliente.ObterPorId(dr.GetInt32(4)),
+                        Usuario.ObterPorId(dr.GetInt32(5)),
+                        dr.GetDateTime(6),
+                        dr.GetString(7)
+                        )
+                    );
+            }
+            return pedidos;
+
+        }
+        public static bool Fechar(int id)
+        {
+            bool teste = false;
+            MySqlCommand cmd = null;
+            try
+            {
+                cmd = Banco.Abrir();
+                cmd.CommandText = "update pedidos set status = 'F' where id = " + id;
+                if (cmd.ExecuteNonQuery() > 0)
+                    teste=true;
+            }
+            catch (Exception)
+            {
+                //  mostra o erro
+            }
+            finally
+            { 
+                Banco.Fechar(cmd);
+                
+            }
+            return teste;
+
+           
+            
+        }
+        public void Atualizar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "update pedidos set desconto = @desconto " +
+                "where id = "+Id;
+            cmd.Parameters.Add("@desconto", MySqlDbType.Decimal).Value = Desconto;
+            cmd.ExecuteNonQuery();
+        }
         public void Arquivar() { }
         public void Restaurar() { }
+
         private string ObterHashCode(int cli, int user) 
         { 
             StringBuilder sb = new StringBuilder();
