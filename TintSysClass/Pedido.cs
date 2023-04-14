@@ -129,7 +129,6 @@ namespace TintSysClass
                         dr.GetDouble(3),
                         Cliente.ObterPorId(dr.GetInt32(4)),
                         Usuario.ObterPorId(dr.GetInt32(5)),
-
                         dr.GetString(7)
                         )
                     );

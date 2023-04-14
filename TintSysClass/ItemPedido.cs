@@ -27,9 +27,9 @@ namespace TintSysClass
             Desconto = desconto;
         }
 
-        public ItemPedido(int id, Produto produto, double preco, double quantidade, double desconto)
+        public ItemPedido(int pedido_id, Produto produto, double preco, double quantidade, double desconto)
         {
-            this.Id = id;
+            Id = pedido_id;
             Produto = produto;
             Preco = preco;
             Quantidade = quantidade;
